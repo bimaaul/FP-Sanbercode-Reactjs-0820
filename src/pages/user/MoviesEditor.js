@@ -9,6 +9,7 @@ const { Content, Sider } = Layout;
 const MoviesEditor = () => {
     const [dataMovie, setDataMovie] = useState(null)
     const [user] = useContext(UserContext)
+    const [search, setSearch] = useState("")
     
     useEffect(() => {      
         if(dataMovie == null) {
@@ -53,6 +54,7 @@ const MoviesEditor = () => {
             title: 'Genre',
             dataIndex: 'genre',
             sorter: (a, b) => a.genre.localeCompare(b.genre),
+            sortDirection: ['descend'],
         },
         {
             title: 'Rating',
@@ -72,6 +74,22 @@ const MoviesEditor = () => {
             )
         }
     ]    
+
+    const submitSearch = (e) =>{
+        e.preventDefault()
+        axios.get(`https://backendexample.sanbersy.com/api/data-movie`)
+        .then(res => {
+          let resMovies = res.data
+          let filteredMovies = resMovies.filter(x=> x.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+          setDataMovie([...filteredMovies])
+        })
+     
+      }
+    
+      const handleChangeSearch = (e)=>{
+        setSearch(e.target.value)
+      }
+    
     
     return(
         <>
@@ -88,7 +106,10 @@ const MoviesEditor = () => {
                 </Sider>
                 <Content>
                     <h1 style={{padding: '16px 24px 0', fontSize: '24px', fontWeight: 600}}>Movie Table</h1>
-                    
+                    <form onSubmit={submitSearch} style={{textAlign: 'center'}}>
+                        <input type="text" value={search} onChange={handleChangeSearch} />
+                        <button>Search</button>
+                    </form>
                     <Table style={{padding: '8px 24px'}} columns={columns} dataSource={dataMovie}/>
                 </Content>
                 <BackTop>

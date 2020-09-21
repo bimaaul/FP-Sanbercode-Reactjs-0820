@@ -9,6 +9,7 @@ const { Content, Sider } = Layout;
 const GamesEditor = () => {
     const [dataGame, setDataGame] = useState(null)
     const [user] = useContext(UserContext)
+    const [search, setSearch] = useState("")
     
     useEffect(() => {      
         if(dataGame == null) {
@@ -27,6 +28,21 @@ const GamesEditor = () => {
           setDataGame(newDataGame)
         })
     }
+
+    const submitSearch = (e) =>{
+        e.preventDefault()
+        axios.get(`https://backendexample.sanbersy.com/api/data-game`)
+        .then(res => {
+          let resGames = res.data
+          let filteredGames = resGames.filter(x=> x.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+          setDataGame([...filteredGames])
+        })
+     
+      }
+    
+      const handleChangeSearch = (e)=>{
+        setSearch(e.target.value)
+      }
 
     const columns = [
         {
@@ -86,6 +102,10 @@ const GamesEditor = () => {
                 </Sider>
                 <Content>
                     <h1 style={{padding: '16px 24px 0', fontSize: '24px', fontWeight: 600}}>Game Table</h1>
+                    <form onSubmit={submitSearch} style={{textAlign: 'center'}}>
+                        <input type="text" value={search} onChange={handleChangeSearch} />
+                        <button>Search</button>
+                    </form>
                     <Table style={{padding: '8px 24px'}} columns={columns} dataSource={dataGame}/>
                 </Content>
                 <BackTop>
