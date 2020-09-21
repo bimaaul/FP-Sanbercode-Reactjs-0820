@@ -127,3 +127,13 @@ a, a:hover {
 .ant-card-cover img {
     border-radius: 8px;
 }
+
+/* Movie */
+.movie-item, .game-item {
+    display: flex;
+    padding: 2%; 
+}
+
+.movie-detail, .game-detail {
+    padding-left: 2%;
+}

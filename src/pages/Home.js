@@ -52,7 +52,7 @@ class Home extends Component {
                                     <Card
                                         style={{ minWidth: 150, maxWidth: 150 }}
                                         cover={
-                                            <Link to="/login">
+                                            <Link to={`/movie/${item.id}`}>
                                                 <img alt="cover" src={item.image_url} width="150" height="225"/>
                                             </Link>
                                         }
@@ -60,7 +60,7 @@ class Home extends Component {
                                     >
                                         <Meta title={
                                             <Tooltip title={item.title}>
-                                                <Link to="#">{item.title}</Link>
+                                                <Link to={`/movie/${item.id}`}>{item.title}</Link>
                                             </Tooltip>
                                             } 
                                             description={item.year} 
@@ -76,7 +76,7 @@ class Home extends Component {
                                 <Card
                                     style={{ minWidth: 150, maxWidth: 150 }}
                                     cover={
-                                        <Link to="/login">
+                                        <Link to={`game/${item.id}`}>
                                             <img alt="cover" src={item.image_url} width="150" height="225"/>
                                         </Link>
                                     }
@@ -84,7 +84,7 @@ class Home extends Component {
                                 >
                                     <Meta title={
                                         <Tooltip title={item.name}>
-                                            <Link to="#">{item.name}</Link>
+                                            <Link to={`game/${item.id}`}>{item.name}</Link>
                                         </Tooltip>
                                         } 
                                         description={item.release} 
