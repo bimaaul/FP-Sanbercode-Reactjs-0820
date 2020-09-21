@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a, a:hover {
+    color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backTop {
+    height: 40;
+    width: 40;
+    line-height: '40px';
+    border-radius: 4;
+    background-color: '#46A049';
+    color: '#fff';
+    margin-left: '32px';
+    text-align: 'center';
+    font-size: 14;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Header */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+    margin-right: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.menuBar {
+    padding: 0 10%;
+    height: 64px;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    box-shadow: 0 0 30px #f3f1f1;
+    background-color: rgba(3,37,65, 1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menuBar a {
+    color: white;
+}
+
+.leftMenu a {
+    margin: 0 8px;
+    padding: 0 4px
+}
+.menuCon{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Home */
+.header {
+    background-image: linear-gradient(rgba(38, 32, 96, 0.2), rgba(38, 32, 96, 0.4)), url(/image/cover.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    padding: 0 2%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header h2 {
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px;
+    margin: 0;
+}
+
+.header h3 {
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 32px;
+    margin: 0;
+}
+
+.section {
+    background-image: linear-gradient(rgba(60, 47, 184, 0.2), rgba(91, 79, 194, 0.4)), url(/image/section.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-left: -2%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    margin: 0;
+}
+
+.section h3 {
+    color: white;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.ant-card {
+    margin: 8px 24px 8px 0;
+    display: inline-block !important;
+    border: 0;
+}
+
+.ant-card-cover img {
+    border-radius: 8px;
 }
