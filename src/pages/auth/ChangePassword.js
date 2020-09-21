@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Input, Button } from 'antd';
 import { UserContext } from '../../context/UserContext';
 import axios from 'axios'
@@ -21,6 +21,7 @@ const tailLayout = {
 
 const ChangePassword = () => {
     const [user] = useContext(UserContext)
+    let history = useHistory()
     
     const onFinish = (values) => {
       // {current_password: "qwertyu", new_password: "dfgh", new_confirm_password: ".kjhn"}
@@ -41,7 +42,8 @@ const ChangePassword = () => {
               }
             })
           .then(res => {
-            alert("Sucess!")
+            alert("Success!")
+            history.push("/")
           })
           .catch(err => {
             alert(err)
